@@ -35,3 +35,34 @@ foreach (var i in inventory)
 // To do that, specify the alignment first, followed by a colon and the format string. 
 // Try the following code that displays three formatted strings with defined field widths:
 Console.WriteLine($"[{DateTime.Now,-20:d}] Hour [{DateTime.Now,-10:HH}] [{1063.342,15:N2}] feet");
+
+Console.WriteLine("");
+
+// You can embed any valid C# expression that returns a value in an interpolated string. 
+// In the following example, as soon as an expression is evaluated, its result is converted into a string and included in a result string:
+
+double a = 3;
+double b = 4;
+Console.WriteLine($"Area of the right triangle with legs of {a} and {b} is {0.5 * a * b}");
+Console.WriteLine($"Length of the hypotenuse of the right triangle with legs of {a} and {b} is {CalculateHypotenuse(a, b)}");
+
+double CalculateHypotenuse(double leg1, double leg2) => Math.Sqrt(Math.Pow(leg1, 2) + Math.Pow(leg2, 2));
+
+// get access to pi or e;
+Console.WriteLine($"{Math.PI:F3}");
+
+
+var xs = new int[] { 1, 2, 7, 9 };
+var ys = new int[] { 7, 9, 12 };
+Console.WriteLine($"Find the intersection of the {{{string.Join(", ", xs)}}} and {{{string.Join(", ", ys)}}} sets.");
+
+var userName = "Jane";
+var stringWithEscapes = $"C:\\Users\\{userName}\\Documents";
+var verbatimInterpolated = $@"C:\Users\{userName}\Documents";
+Console.WriteLine(stringWithEscapes);
+Console.WriteLine(verbatimInterpolated);
+
+// Expected output:
+// Find the intersection of the {1, 2, 7, 9} and {7, 9, 12} sets.
+// C:\Users\Jane\Documents
+// C:\Users\Jane\Documents
